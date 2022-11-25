@@ -1,0 +1,19 @@
+- name: test
+  on: push
+  jobs:
+    test:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Get code
+          uses: actions/checkout@v3
+        - name: Install Dependencies
+          run: npm ci
+        - name: Lint
+          run: npm run lint
+        - name: Test code
+          run: ntp run test
+        - name: Build code
+          run: npm run build
+        - name: Deploy code
+          run: echo 'Deploying...'
+
